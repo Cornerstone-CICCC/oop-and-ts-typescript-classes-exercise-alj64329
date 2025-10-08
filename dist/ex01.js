@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Exercise 1: Access Modifiers
  *
@@ -11,32 +12,27 @@
  *   - `showInfo()` logs brand, batteryLevel, and os
   * - Create a subclass `AndroidPhone` with a method of upgradeOS that accepts a string parameter and updates the `os` property with that parameter.
  */
-
 class Smartphone {
-    constructor(public brand:string, private batteryLevel:number, protected os:string){
+    constructor(brand, batteryLevel, os) {
+        this.brand = brand;
+        this.batteryLevel = batteryLevel;
+        this.os = os;
     }
-
-    charge(amount: number){
-        this.batteryLevel= this.batteryLevel+amount>100? 100: this.batteryLevel+amount
+    charge(amount) {
+        this.batteryLevel = this.batteryLevel + amount > 100 ? 100 : this.batteryLevel + amount;
     }
-
-    showInfo(){
-        console.log(`${this.brand}, Battery: ${this.batteryLevel}%, OS: ${this.os}`)
+    showInfo() {
+        console.log(`${this.brand}, Battery: ${this.batteryLevel}%, OS: ${this.os}`);
     }
-  
 }
-
 class AndroidPhone extends Smartphone {
-    constructor(brand:string, batteryLevel:number, os:string){
-        super(brand, batteryLevel, os)
+    constructor(brand, batteryLevel, os) {
+        super(brand, batteryLevel, os);
     }
-    
-    upgradeOS(newOs:string){
-        this.os=newOs
+    upgradeOS(newOs) {
+        this.os = newOs;
     }
-  
 }
-
 // Driver code
 const phone = new AndroidPhone("Samsung", 50, "Android 12");
 phone.charge(30);
